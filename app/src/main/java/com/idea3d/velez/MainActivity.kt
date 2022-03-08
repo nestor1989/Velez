@@ -30,6 +30,8 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.appBarMain.toolbar)
 
+        setNavHeader()
+
         binding.appBarMain.fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
@@ -48,11 +50,7 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        val hView: View = binding.navView.getHeaderView(0)
-        val userName: TextView = hView.findViewById(R.id.tvName)
-        val userEmail: TextView=hView.findViewById(R.id.tvMail)
-        val photoUser: ImageView=hView.findViewById(R.id.imageView)
-        userName.text="holaa"
+
 
     }
 
@@ -65,5 +63,14 @@ class MainActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
+
+    private fun setNavHeader(){
+        val hView: View = binding.navView.getHeaderView(0)
+        val userName: TextView = hView.findViewById(R.id.tvName)
+        val userEmail: TextView=hView.findViewById(R.id.tvMail)
+        val photoUser: ImageView=hView.findViewById(R.id.imageView)
+        userName.text=getString(R.string.bassedas_name)
+        userEmail.text=getString(R.string.bassedas_email)
     }
 }
